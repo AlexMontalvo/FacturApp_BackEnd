@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, func
 from src.models import Base, session
 
 class Products(Base):
@@ -26,3 +26,23 @@ class Products(Base):
     def get():
      products = session.query(Products).all()
      return products
+
+    def get_paginated(page, per_page): 
+     total_products = session.query(func.count(Products.id)).scalar()
+     products = session.query(Products).offset((page - 1) * per_page).limit(per_page).all()
+     return products, total_products
+
+    def get_by_id(product_id):
+     product = session.query(Products).filter_by(id=product_id).first()
+     return product
+
+    def get_by_name(name):
+     product = session.query(Products).filter_by(name=name).first()
+     return product 
+      
+    def save(self):
+        session.add(self)
+        session.commit()
+   
+    def update(self):
+        session.commit()    
