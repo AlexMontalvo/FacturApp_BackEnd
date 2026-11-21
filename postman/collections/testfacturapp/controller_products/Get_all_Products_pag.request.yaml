@@ -1,0 +1,11 @@
+$kind: http-request
+description: ""
+url: http://127.0.0.1:5000/api/v1/products?page=3&per_page=4
+method: GET
+queryParams:
+  page: "3"
+  per_page: "4"
+body:
+  type: json
+  content: ""
+order: 5000

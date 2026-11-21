@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from src.models.users import Users
+from src.models.users import Users, Role
 from src.utils.auth import generate_token
 
 auth_bp = Blueprint('auth_v1', __name__, url_prefix='/api/v1')
@@ -22,7 +22,7 @@ def register():
     if existing_user:
         return jsonify({'success': False, 'message': 'User with this email already exists'}), 400
 
-    new_user = Users(email=email, password=password, name=name, role=role)
+    new_user = Users(email=email, password=password, name=name, role=Role.PENDING.value)
     new_user.save()
 
     return jsonify({'success': True, 'message': 'User registered successfully'}), 201

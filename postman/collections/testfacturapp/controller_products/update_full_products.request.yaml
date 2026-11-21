@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://127.0.0.1:5000/api/v1/products
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"active\": 1,\r
+
+    \    \"category_id\": 5,\r
+
+    \    \"description\": \"Arroz costal por 12 libras\",\r
+
+    \    \"id\": 18,\r
+
+    \    \"name\": \"Arroz costa\",\r
+
+    \    \"price\": 40000.0,\r
+
+    \    \"stock\": 45\r
+
+    }"
+order: 4000

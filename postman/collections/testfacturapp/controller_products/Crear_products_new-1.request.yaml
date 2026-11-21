@@ -1,0 +1,24 @@
+$kind: http-request
+name: Crear_products_new
+url: http://127.0.0.1:5000/api/v1/products
+method: POST
+body:
+  type: json
+  content: "{  \r
+
+    \    \"name\": \"Arroz Sinu\",\r
+
+    \    \"description\":\"Arroz sinu por 2 libras\",\r
+
+    \    \"price\" : 15000,\r
+
+    \    \"stock\" : 36,\r
+
+    \    \"category_id\": 5\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0vhb}}"
+order: 2000

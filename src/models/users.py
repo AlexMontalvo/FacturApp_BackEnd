@@ -7,6 +7,8 @@ class Roles(str, enum.Enum):
    ADMIN= 'ADMIN'
    SELLER = 'SELLER' 
 
+   PENDING= 'PENDING'
+
 class Users(Base):
     __tablename__ = 'users'
 
@@ -17,7 +19,7 @@ class Users(Base):
     role = Column(String(50), nullable=False, default='user')  # Default role is 'user' 
     active = Column(Integer, default=1)  # 1 for active, 0 for inactive
 
-    def __init__(self, email, password, name, role):
+    def __init__(self, email, password, name, role=Roles.PENDING.value):
         self.email = email
         self.password_hash = generate_password_hash(password)
         self.name = name
